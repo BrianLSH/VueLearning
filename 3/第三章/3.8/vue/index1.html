@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div>
+        <p>
+            1.对数组进行操作,利用数组的几个方法 push pop shift splice sort reverse
+            2,重新赋值, 数据引用指向到另一个空间, 改变数组的值
+        </p>
+    </div>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <!-- <div id="app"> -->
+        <!-- 为了提高循环的性能,给div添加一个唯一的key值， -->
+        <!-- <div v-for="(item, index) in list" :key="index">
+            
+            <div>
+                    {{item.id}}-----{{item.name}}-----{{index}}
+            </div>
+            <span>
+                {{item.name}}
+            </span>
+
+        </div>
+    </div>
+    <hr> -->
+    <hr>
+    <hr>
+    <hr>
+    <!-- 模板占位符，可以帮助我们去包裹一些元素，但是在循环的过程中不会被渲染到页面上 -->
+    <!-- 为了提高循环的性能,给div添加一个唯一的key值， -->
+    <!-- <div id="app">
+            
+            <template v-for="(item, index) in list">
+                
+                <div>
+                        {{item.id}}-----{{item.name}}-----{{index}}
+                </div>
+
+                <span>
+                    {{item.name}}
+                </span>
+    
+            </template>
+    </div> -->
+
+
+
+    <div id="app">
+        <div v-for="item of userInfo">{{userInfo}}</div>
+        <div v-for="(item, key, index) of userInfo">
+            {{item}}----{{item.age}}-------{{index}}------{{key}}
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                // 循环数组
+                // list: [{
+                //     id: "1",
+                //     name: "张三1"
+                // }, {
+                //     id: "2",
+                //     name: "李四2" 
+                // }, {
+                //     id: "3",
+                //     name: "王五3"                          
+                // }]
+
+                userInfo: {
+                    name: "张三",
+                    age: 34
+                }
+            }
+        });
+    </script>
+</body>
+</html>

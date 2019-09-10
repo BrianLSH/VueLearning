@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>:class绑定样式</title>
+  <script src="./vue.js">
+  </script>
+  <style>
+    .active {
+      color:red
+    }
+  </style>
+</head>
+<body>
+
+  <!-- <div id="app">
+    <div @click="handleDivClick" :class="{active: isActivited}">
+      你好世界
+    </div>
+  </div> -->
+
+  <p>
+  <h1>class 形式绑定样式</h1>  
+    。。。。。
+    。。。。。。。
+  </p>
+  <div id="app">
+     <!-- //active 是一个变量 -->
+    <div @click="handleDivClick" :class="[activite]">
+      ninoaoaoaoaoa
+    </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+
+        // isActivited: false,
+
+        activite:""
+      },
+      methods: {
+        handleDivClick: function() {
+
+          // this.isActivited = !this.isActivited
+
+
+
+          // if(this.activite === "active"){
+          //
+          //   this.activite = ""
+          // }else{
+          //   this.activite = "active"
+          // }
+          this.activite = this.activite === "active" ? "":"active";
+
+
+
+
+        }
+      }
+    });
+  </script>
+</body>
+</html>

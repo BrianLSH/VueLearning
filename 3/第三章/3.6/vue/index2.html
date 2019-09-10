@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>:style绑定样式</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <p>
+    <h1>:style绑定样式</h1>
+  </p>
+  <!-- <div id="root"> -->
+    <!-- styleObj 是一个数据对象 -->
+    <!-- <div @click="handleDivClick" :style="styleObj">
+      nihao
+    </div>
+  </div> -->
+
+
+
+<div id="root">
+  <div @click="handleDivClick" :style="[styleObj, {fontSize: '50px'}]">
+  nhoaoaoaoaoaoa </div>
+</div>
+  <script>
+    var root = new Vue({
+      el: "#root",
+      data: {
+        styleObj: {
+          color:"black"
+        }
+      },
+      methods: {
+        handleDivClick: function() {
+          this.styleObj.color = this.styleObj.color === "black" ? "red" : "black"
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <counter ref="one" @get-change="handleChange"></counter>
+        <counter ref="two" @get-change="handleChange"></counter>
+        <div>{{total}}</div>
+  
+    </div>
+    
+    <script>
+        Vue.component("counter", {
+            template: '<div @click="counting">{{number}}</div>',
+            data: function() {
+                return {
+                    number: 0
+                }
+            },
+            methods: {
+                counting: function() {
+
+                    this.number ++
+                    // 在父组件中监听getTotal方法
+                    this.$emit('get-change')
+                }
+            }
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                total: 0
+            },
+            methods: {
+                handleChange: function() {
+                    // console.log(this.$refs.one.number); 获取的内容是对counter子组件的引用，获取的是子组件counter里面的data的值
+                    // console.log(this.$refs.two.number);
+                    this.total = this.$refs.one.number + this.$refs.two.number
+
+
+                }
+            }
+        });
+    </script>
+</body>
+</html>

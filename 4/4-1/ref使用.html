@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"> </script>
+</head>
+<body>
+
+    <!-- 1，ref 例子 -->
+    <div id="app">
+        <div ref="hello" @click="handleDivClick">点我</div>
+    </div>
+
+    <script>
+        var app = new Vue({
+
+            el: "#app",
+            
+           
+            methods: {
+                 // 1.ref引用  操作dom 获取内容
+                handleDivClick: function() {
+                    console.log(this.$refs.hello.innerHTML);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

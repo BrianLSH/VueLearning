@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js">
+
+  </script>
+</head>
+<body>
+  <div id="app">
+    <table>
+       <tr is="row"></tr>
+    <tr is="row"></tr>
+        <tr is="row"></tr>
+          <tr is="row"></tr>
+
+
+          <!-- 直接写组件不解析，需要用is 类似的还有select option   table tr 等 -->
+          <!-- <row></row>
+            <row></row>
+              <row></row> -->
+    </table>
+  </div>
+
+  <script type="text/javascript">
+  Vue.component('row', {
+    data: function(){
+      // 返回一个对象，使子组件数据可以不一样，各自拥有自己的数据
+      return {
+        content : "121212121"
+      }
+    },
+    template: '<tr><td>{{content}}</td></tr>'
+  });
+    var app = new Vue({
+      el: "#app"
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <!-- <div v-if="show">{{message}}</div>
+  <div v-else>bye</div>
+  <div v-show="show">{{message}}</div> -->
+
+  <!-- <div v-if="show === 'a'">this is a</div>
+  <div v-else-if="show === 'b'">this is b</div>
+  <div v-else>the others</div> -->
+
+  <div v-if="show">
+    用户名: <input key="username" type="text">
+  </div>
+  <div v-else>
+    邮箱: <input key="email" type="text">
+  </div>
+</div>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      // show: true,
+
+      // show: "a",
+
+      show: true,
+      message: "i love you"
+    }
+  });
+</script>
+</body>
+</html>

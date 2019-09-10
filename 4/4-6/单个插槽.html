@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div>
+    <p>单个插槽</p>
+  </div>
+  <div id="app1">
+    <child1>
+      <h1>jack</h1>
+    </child1>
+  </div>
+<script>
+  Vue.component('child1', {
+    template: `<div>
+    <p>hello1</p>
+    <slot></slot>
+    </div>`
+  });
+  var app = new Vue({
+    el: "#app1"
+  });
+</script>
+
+
+
+  <div id="app">
+    <child content="<p>dell</p>"></child>
+  </div>
+  <script>
+    Vue.component('child', {
+      props: ['content'],
+      //此处用反引号
+      template: `<div>
+        <p>hello</p>
+        <div v-html="this.content"></div>
+      </div>`
+    });
+
+    var app = new Vue({
+      el: "#app",
+    });
+  </script>
+</body>
+</html>

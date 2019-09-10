@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js">
+
+  </script>
+</head>
+<body>
+  <div>
+    <p>
+      ref是对 dom的操作，， 如果用在组件上 则是对组建的引用
+    </p>
+    <hr><hr><hr>
+  </div>
+  <div id="app">
+    <!-- 2 子组件对外触发change事件  在父组件的模板区 创建的子组件进行监听  -->
+     <!-- ref用在组建中  引用的是组件 -->
+    <item ref='one' @change='handleChange'></item>
+    <item ref='two' @change='handleChange'></item>
+    <div>{{total}}</div>
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('item', {
+      template: '<div @click="handleDivClick">{{number}}</div>',
+      data: function() {
+        return {
+          number: 0
+        }
+
+      },
+      methods: {
+        handleDivClick: function(){
+          this.number ++
+          //1 子组件向外触发事件   然后在父组件监听
+          this.$emit('change');
+        }
+      }
+    });
+    var app = new Vue({
+      el: "#app",
+      data: {
+        total: 0
+      },
+      methods: {
+        handleChange: function() {
+          this.total = this.$refs.one.number + this.$refs.two.number
+        }
+      }
+    });
+  </script>
+</body>
+</html>

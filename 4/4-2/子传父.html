@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div>
+        <p>
+            子组件传给父组件       用$emit向外触发一个事件
+        </p>
+    </div>
+    <div id="root">
+        <!--  父组件传给子组件传值   加冒号的是一个数字，不加冒号，是一个字符串 -->
+        <counter :count="2" @inc="handleTotal"></counter>
+        <counter :count="3" @inc="handleTotal"></counter>
+        <div>{{total}}</div>
+    </div>
+    <script>
+        var counter = {
+            props: ['count'],
+
+            // template: '<div @click="handleClick">{{count}}</div>',
+
+
+            template: '<div @click="handleClick">{{number}}</div>',
+            // 组组件里面的data要用函数  return回一个对象
+            data: function() {
+                return {
+                    number: this.count
+                }
+            },
+            methods: {
+                handleClick: function() {
+                    // this.count ++  //单向数据流，父组件传给子组件的值，子组件无法修改   可以在子组件里面定义一个值做中转
+                    // 在子组件里面copy 一个副本，对副本进行更改
+
+                    this.number ++
+                    this.$emit('inc', 3)
+                }
+            }
+        }
+    var app = new Vue({
+        el: "#root",
+        components: {
+            counter: counter
+        },
+        data: {
+            total: 5
+        },
+        methods: {
+            handleTotal: function(step) {
+                this.total += step
+            }
+        }
+
+    });
+    </script>
+</body>
+</html>

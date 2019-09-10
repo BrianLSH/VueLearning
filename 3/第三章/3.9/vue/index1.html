@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+
+  <p>
+    Vue.set() 可改变数组的值  Vue.set(app.list, 0, 10)
+  </p>
+<div id="app">
+  <!-- <div v-for="(item, key, index) of userInfo">
+    {{item}}----{{key}}-----{{index}}
+  </div> -->
+
+  <div v-for="item in list">
+    {{item}}
+  </div>
+</div>
+<script>
+var app = new Vue({
+  el: "#app",
+  data: {
+    // userInfo: {
+    //   name: "张三",
+    //   age: "李四",
+    //   city: "南阳"
+    // }
+    list: [
+      1,2,3
+    ]
+  },
+  methods: {
+
+  }
+});
+</script>
+</body>
+</html>

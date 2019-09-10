@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div>
+        <p>
+            1,小bug解决, table  ul  select  等 用  is 语法<br>
+            2.组件里面的data 用函数 <br>
+            3.refer 的使用 <br>
+        </p>
+    </div>
+    <div id="app">
+        <table>
+            <tbody>
+                <tr is="row"></tr>
+                <!-- <row></row> -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        Vue.component('row', {
+            data: function() {
+                // 返回一个对象的目的,就是为了让每一个子组件拥有自己的数据
+                return {
+                    content: "我是表格1",
+                }
+            },
+            template: '<tr><td>{{content}}</td></tr>',
+        });
+    var app = new Vue({
+        el: "#app",
+
+    });
+    </script>
+</body>
+</html>

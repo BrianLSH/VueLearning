@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div>
+    <p>
+      1,区别自定义事件和原生事件的区别 <br>
+            ---------自定义事件  绑定在父组件上面的事件<br>
+            ---------原生事件   绑定在子组件上面的事件<br>
+    </p>
+  </div>
+<!-- 两层传递比较麻烦 -->
+  <div id="app">
+    <Child @click="handleClick"></Child>
+  </div>
+
+  <script>
+    Vue.component("Child", {
+      template: "<div @click='handleClick'>Child</div>",
+      methods: {
+        handleClick: function() {
+          alert("我是原生事件"),
+          this.$emit('click')
+        }
+      }
+    });
+    var app = new Vue({
+      el: "#app",
+      methods: {
+        handleClick: function() {
+          alert("我是自定义事件");
+        }
+      }
+    });
+  </script>
+</body>
+</html>
